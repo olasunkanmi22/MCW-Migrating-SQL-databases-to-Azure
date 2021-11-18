@@ -1,8 +1,8 @@
 # Manual resource deployment and setup guide
 
-This guide provides step-by-step instructions to manually provision and the configure resources created by the ARM template referenced in the before the hands-on lab guide.
+This guide provides step-by-step instructions to manually provision and configure resources created by the ARM template referenced in the Before the Hands-on Lab guide.
 
-June 2021
+October 2021
 
 **Contents**
 
@@ -28,7 +28,7 @@ June 2021
 
 ## Task 1: Create a virtual network
 
-In this task, you create a virtual network (VNet), which will contain your SQL managed instance, JumpBox VM, and a few other resources use throughout this hands-on lab. Once provisioned, you will associate the route table with the ManagedInstance subnet, and add a Management subnet to the VNet.
+In this task, you create a virtual network (VNet), which will contain your SQL managed instance, JumpBox VM, and a few other resources use throughout this hands-on lab. Once provisioned, you will associate the route table with the ManagedInstance subnet and add a Management subnet to the VNet.
 
 ### Create virtual network
 
@@ -65,7 +65,7 @@ In this task, you create a virtual network (VNet), which will contain your SQL m
 7. Edit the subnet's properties as follows:
 
    - **Subnet Name**: Enter `ManagedInstance`
-   - **Address space**: Accept the default value. This should have a subnet mask of /24, and be within the address space indicated in the VNet's IPv4 address space, in the format **10.X.0.0/24**.
+   - **Address space**: Accept the default value. This should have a subnet mask of /24 and be within the address space indicated in the VNet's IPv4 address space, in the format **10.X.0.0/24**.
    - Select **Save**.
 
 8. Select **Review + create**. The default values will be used for the remaining tabs, so they can be skipped.
@@ -102,7 +102,7 @@ In this task, you configure this virtual network (VNet).
 
     ![Subnets is selected and highlighted in the left-hand menu. On the Subnets blade, +Gateway subnet is highlighted.](media/vnet-add-gateway-subnet.png "Subnets")
 
-5. The **Name** for gateway subnet is automatically filled in with the value `GatewaySubnet`. This value is required in order for Azure to recognize the subnet as the gateway subnet. Accept the auto-filled Address range value, and leave Route table, Service endpoints, and Subnet delegation set to their default values.
+5. The **Name** for the gateway subnet is automatically filled in with the value `GatewaySubnet`. This value is required for Azure to recognize the subnet as the gateway subnet. Accept the auto-filled Address range value, and leave Route table, Service endpoints, and Subnet delegation set to their default values.
 
     ![The Add subnet form is displayed, with the default values.](media/vnet-add-gateway-subnet-form.png "Add subnet")
 
@@ -118,7 +118,7 @@ In this task, you set up a Virtual Network Gateway.
 
    ![The Show portal menu icon is highlighted, and the portal menu is displayed. Create a resource is highlighted in the portal menu.](media/create-a-resource.png "Create a resource")
 
-2. Enter **network gateway** into the Search the Marketplace box, and select **Virtual network gateway** from the results.
+2. Enter **network gateway** into the Search the Marketplace box and select **Virtual network gateway** from the results.
 
    !["Virtual network gateway" is entered into the Search the Marketplace box, and Virtual network gateway is highlighted in the results.](media/create-resource-virtual-network-gateway.png "Create a resource")
 
@@ -193,7 +193,7 @@ In this task, you create an Azure SQL Managed Instance.
    - Administrator account:
 
      - **Managed instance admin login**: Enter `sqlmiuser`
-     - **Password**: Enter `Password.1234567890`
+     - **Password**: Enter a secure password of your choice, like `Password.1234567890`
 
      ![On the Create SQL Managed Instance Basics tab, the values specified above are entered into the appropriate fields.](media/sql-managed-instance-basics-tab.png "Create SQL Managed Instance")
 
@@ -210,7 +210,7 @@ In this task, you create an Azure SQL Managed Instance.
 
    ![On the Create SQL Managed Instance Networking tab, the configuration specified above is entered into the form.](media/sql-managed-instance-networking-tab.png "Create SQL Managed Instance")
 
-6. Select **Next: Review + create**, and on the **Review + create** tab, review the configuration and then select **Create**.
+6. Select **Next: Review + create**, and on the **Review + create** tab, review the configuration, and then select **Create**.
 
    > **Note**: Provisioning of SQL Managed Instance can take 4+ hours if this is the first instance being deployed into a subnet. You can move on to the remaining tasks while the provisioning is in process. If the deployment process goes beyond 6 hours, you may need to submit a support ticket to request assistance in completing the setup.
 
@@ -249,7 +249,7 @@ In this task, you provision a virtual machine (VM) in Azure. The VM image used h
    - Administrator account:
 
      - **Username**: Enter `sqlmiuser`
-     - **Password**: Enter `Password.1234567890`
+     - **Password**: Enter a secure password, like `Password.1234567890`
 
    - Inbound port rules:
 
@@ -318,7 +318,7 @@ In this task, you provision another virtual machine (VM) in Azure, which will ho
    - Administrator Account:
 
      - **Username**: Enter `sqlmiuser`
-     - **Password**: Enter `Password.1234567890`
+     - **Password**: Enter a secure password, like `Password.1234567890`
 
    - Inbound Port Rules:
 
@@ -359,7 +359,7 @@ In this task, you provision another virtual machine (VM) in Azure, which will ho
 
      - **SQL Authentication**: Select **Enable**.
      - **Login name**: Enter `sqlmiuser`
-     - **Password**: Enter `Password.1234567890`
+     - **Password**: Use the same secure password (like `Password.1234567890`)
 
      ![The previously specified values are entered into the SQL Server settings tab.](media/sql-server-2008-r2-vm-sql-settings.png "SQL Server settings")
 
@@ -487,7 +487,7 @@ In this task, you create an Azure Storage account.
 
 4. Select **Review + create**.
 
-5. On the **Review + create** blade, ensure the Validate passed message is displayed and then select **Create**.
+5. On the **Review + create** blade, ensure the Validation passed message is displayed and then select **Create**.
 
    ![On the Review + create blade, the Validation passed message is displayed at the top.](media/storage-create-account-review.png "Create storage account")
 
@@ -524,15 +524,19 @@ In this task, you create an RDP connection to your JumpBox virtual machine (VM) 
 7. Enter the following credentials when prompted, and then select **OK**:
 
    - **Username**: `sqlmiuser`
-   - **Password**: `Password.1234567890`
+   - **Password**: Use the JumpBox secure password (`Password.1234567890`)
 
    ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials.png "Enter your credentials")
 
-8. Select **Yes** to connect, if prompted the identity of the remote computer cannot be verified.
+8. Select **Yes** to connect if you are prompted that the identity of the remote computer cannot be verified.
 
    ![In the Remote Desktop Connection dialog box, a warning states the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-jumpbox.png "Remote Desktop Connection dialog")
 
 9. Once logged in, launch the **Server Manager**. This should start automatically, but you can access it via the Start menu if it does not.
+
+    >**Note**: To improve the appearance of the RDP window on your system, you can edit the downloaded RDP file to scale the resolution appropriately. Select **Show Options** and navigate to the **Display** tab. Manipulate the slider under **Display configuration**.
+    >
+    > ![This image demonstrates how to adjust the RDP display resolution by editing the RDP file downloaded from the Azure Portal.](./media/rdp-set-resolution.png "RDP monitor resolution update")
 
 10. Select **Local Server**, then select **On** next to **IE Enhanced Security Configuration**.
 
@@ -542,13 +546,13 @@ In this task, you create an RDP connection to your JumpBox virtual machine (VM) 
 
     ![Screenshot of the Internet Explorer Enhanced Security Configuration dialog box, with Administrators set to Off.](./media/internet-explorer-enhanced-security-configuration-dialog.png "Internet Explorer Enhanced Security Configuration dialog box")
 
-12. Close the Server Manager, but leave the connection to the JumpBox open for the next task.
+12. Close the Server Manager but leave the connection to the JumpBox open for the next task.
 
 ## Task 10: Install required software on the JumpBox
 
 In this task, you download the lab starter solution and install SQL Server Management Studio (SSMS) on the JumpBox.
 
-1. First, download the lab starter solution from the [MCW Migrating SQL databases to Azure GitHub repo](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/archive/master.zip).
+1. First, download the lab starter solution from the [MCW Migrating SQL databases to Azure GitHub repo](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/archive/main.zip).
 
 2. If you receive a message that downloads are not allowed, select the Tools icon at the top right of the Internet Explorer browser window, and then select **Internet options** from the context menu.
 
@@ -564,11 +568,11 @@ In this task, you download the lab starter solution and install SQL Server Manag
 
 5. Select **OK** on the Internet Options dialog, and then attempt the download again.
 
-6. When prompted, choose to save the file and then select Open folder.
+6. When prompted, choose to save the file, and then select Open folder.
 
    ![The download bar is displayed in Internet Explorer, and Open folder is highlighted.](media/ie-download-open-folder.png "Internet Explorer")
 
-7. Once it is download, extract the ZIP file to `C:\hands-on-lab`.
+7. Once it is downloaded, extract the ZIP file to `C:\hands-on-lab`.
 
    ![In the Extract Compressed Zip File dialog, C:\hands-on-lab is entered into the destination field.](media/extract-compressed-zip.png "Extract Compressed Zip")
 
@@ -578,7 +582,7 @@ In this task, you download the lab starter solution and install SQL Server Manag
 
    ![The Download SQL Server Management Studio (SSMS) link is highlighted on the page specified above.](media/download-ssms.png "Download SSMS")
 
-   > **Note**: Versions change frequently, so if the version number you see does not match the screenshot, download and install the most recent version.
+   > **Note**: Versions change frequently, so if the version number you see does not match the screenshot, download, and install the most recent version.
 
 9. Run the downloaded installer.
 
@@ -607,7 +611,7 @@ In this task, you open an RDP connection to the SqlServer2008 VM, disable Intern
 4. Enter the following credentials when prompted, and then select **OK**:
 
    - **Username**: `sqlmiuser`
-   - **Password**: `Password.1234567890`
+   - **Password**: Use the SqlServer2008 VM secure password (`Password.1234567890`)
 
    ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials-sql-2008.png "Enter your credentials")
 
@@ -617,6 +621,10 @@ In this task, you open an RDP connection to the SqlServer2008 VM, disable Intern
 
 6. Once logged in, launch the **Server Manager**. This should start automatically, but you can access it via the Start menu if it does not.
 
+    >**Note**: To improve the appearance of the RDP window on your system, you can edit the downloaded RDP file to scale the resolution appropriately. Select **Show Options** and navigate to the **Display** tab. Manipulate the slider under **Display configuration**.
+    >
+    > ![This image demonstrates how to adjust the RDP display resolution by editing the RDP file downloaded from the Azure Portal.](./media/rdp-set-resolution.png "RDP monitor resolution update")
+
 7. On the **Server Manager** view, select **Configure IE ESC** under Security Information.
 
    ![Screenshot of the Server Manager. In the left pane, Local Server is selected. In the right, Properties (For LabVM) pane, the IE Enhanced Security Configuration, which is set to On, is highlighted.](./media/windows-server-2008-manager-ie-enhanced-security-configuration.png "Server Manager")
@@ -625,23 +633,31 @@ In this task, you open an RDP connection to the SqlServer2008 VM, disable Intern
 
    ![Screenshot of the Internet Explorer Enhanced Security Configuration dialog box, with Administrators set to Off.](./media/2008-internet-explorer-enhanced-security-configuration-dialog.png "Internet Explorer Enhanced Security Configuration dialog box")
 
-9. Close the Server Manager.
+9. Close the Server Manager, as you will proceed to install the Microsoft Data Migration Assistant v5.x.
 
-10. Next, you will install the Microsoft Data Migration Assistant v5.x by navigating to <https://www.microsoft.com/en-us/download/details.aspx?id=53595> in a web browser on the SqlServer2008 VM and then select the **Download** button.
+10. As **Microsoft Data Migration Assistant** requires .NET Framework 4.8 to operate, install it from the [Microsoft Site](https://go.microsoft.com/fwlink/?linkid=2088631) by pasting `https://go.microsoft.com/fwlink/?linkid=2088631` into an Internet Explorer address bar.
 
-    ![The Download button is highlighted on the Data Migration Assistant download page.](media/dma-download.png "Download Data Migration Assistant")
+11. **Download** and **Run** the installation package to proceed with new .NET Framework 4.8 setup.
 
-    > **Note**: Versions change frequently, so if the version number you see does not match the screenshot, download and install the most recent version.
+12. Scroll down terms, **Accept** the license terms, and select **Install**.
 
-11. Run the downloaded installer.
+    ![Read and agree framework .Net 4.8 license terms to proceed with installation.](media/agree-framework-4-8-terms.png "Agree framework .Net 4.8 license terms")
 
-12. Select **Next** on each of the screens, accepting the license terms and privacy policy in the process.
+13. After framework setup, **restarting** the VM is required. Select **Restart now** when prompted and wait a moment before connecting back to your VM. Generally, restarting takes less than two minutes.
 
-13. Select **Install** on the Privacy Policy screen to begin the installation.
+    ![Restarting VM is required after .Net 4.8 setup is complete.](media/restart-after-framework-4-8-setup.png "Restart after framework .Net 4.8 setup")
 
-14. On the final screen, select **Finish** to close the installer.
+14. Install **Microsoft Data Migration Assistant** on your SqlSever2008 VM by accessing the [download page](https://www.microsoft.com/en-us/download/details.aspx?id=53595) with Internet Explorer.
 
-    ![The Finish button is selected on the Microsoft Data Migration Assistant Setup dialog.](./media/data-migration-assistant-setup-finish.png "Run the Microsoft Data Migration Assistant")
+15. Select **Download** to get the installation files.
+
+    ![Copy the URL into Internet explorer then download installation file.](media/download-migration-assistant.png "Download Migration Assistant")
+
+16. Complete the download. Execute the downloaded file on the SQL Server 2008 R2 VM.
+
+    ![Proceed with complete installation when prompted.](media/proceed-complete-installation.png "Proceed complete installation")
+
+17. As with the previous installation, start by selecting **Next**. Scroll down the license terms, **Accept** them, and select the **Install** button.
 
 ## Task 12: Configure the WideWorldImporters database on the SqlServer2008 VM
 
@@ -649,10 +665,10 @@ In this task, you restore and configure the `WideWorldImporters` database on the
 
 ### Restore database
 
-1. On the SqlServer2008 VM, download a [backup of the WideWorldImporters database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak). Then save it to your `C:\Users\sqlmiuser\Downloads` of the VM, and copy the file to the  `D:\`.
+1. On the SqlServer2008 VM, download a [backup of the WideWorldImporters database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/main/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak). Then save it to your `C:\Users\sqlmiuser\Downloads` of the VM and copy the file to the  `D:\`.
 
     > **Note**: Accessing **Download** folder is not authorized from SQL Server Management Studio, while `D:\` is.
-    > **Hint**: Copy file URL to VM using Internet Explorer : `https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak`
+    > **Hint**: Copy file URL to VM using Internet Explorer: `https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/main/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak`
 
 2. Next, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering **sql server** into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio** from the search results.
 
@@ -666,7 +682,7 @@ In this task, you restore and configure the `WideWorldImporters` database on the
 
    ![In the SSMS Object Explorer, the context menu for Databases is displayed and Restore Database is highlighted.](media/ssms-databases-restore.png "SSMS Object Explorer")
 
-5. You will now restore the `WideWorldImporters` database using the downloaded `WideWorldImporters.bak` file. On the **General** page of the Restore Database dialog, select **From device** under Source, and then select the Browse (`...`) button to the right of the Device box.
+5. You will now restore the `WideWorldImporters` database using the downloaded `WideWorldImporters.bak` file. On the **General** page of the Restore Database dialog, select **Device** under Source, and then select the Browse (`...`) button to the right of the Device box.
 
    ![Under Source in the Restore Database dialog, Device is selected and highlighted, and the Browse button is highlighted.](media/ssms-restore-database-source.png "Restore Database source")
 
@@ -680,7 +696,7 @@ In this task, you restore and configure the `WideWorldImporters` database on the
 
 8. Select **OK** on the **Select backup devices** dialog. This returns you to the Restore Database dialog. The dialog now contains the information required to restore the `WideWorldImporters` database.
 
-9. Select the restore check mark. Select **WideWorldImporters** from **to database** menu. Then, select **OK** to start to restore.
+9. Select the restore checkmark. Select **WideWorldImporters** from the **Database** menu. Then, select **OK** to start to restore.
 
    ![The completed Restore Database dialog is displayed, with the WideWorldImporters database specified as the target.](media/ssms-restore-database.png "Restore Database")
 
@@ -694,17 +710,17 @@ In this task, you restore and configure the `WideWorldImporters` database on the
 
     ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
 
-2. Copy and paste the SQL script below into the new query window:
+2. In the SQL script editor, switch the script context to the SQL Server system database, create a new login, and assign it to the `sysadmin` role by typing the commands in the image below.
+
+   ![This script demonstrates how to create a new login called WorkshopUser in the system SQL Server database and add the new login to the sysadmin role.](./media/create-login-system-db.png "Create new login and assign role")
+
+3. To run the script, select **Execute** from the SSMS toolbar.
+
+    ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
+
+4. Create a new query window and copy and paste the SQL script below. Execute the script.
 
    ```sql
-   USE master;
-   GO
-
-   EXEC sp_addsrvrolemember
-      @loginame = N'WorkshopUser',
-      @rolename = N'sysadmin';
-   GO
-
    -- Assign the user to the WideWorldImporters database
    USE WideWorldImporters;
    GO
@@ -717,15 +733,7 @@ In this task, you restore and configure the `WideWorldImporters` database on the
    GO
    ```
 
-3. To run the script, select **Execute** from the SSMS toolbar.
-
-    ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
-
-4. Select **New Query** from the SSMS toolbar again.
-
-    ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
-
-5. Next, copy and paste the SQL script below into the new query window. This script enables Service broker on the `WideWorldImporters` database.
+5. Next, copy and paste the SQL script below into another new query window. This script enables Service broker on the `WideWorldImporters` database.
 
     ```sql
     USE [WideWorldImporters];
@@ -741,6 +749,4 @@ In this task, you restore and configure the `WideWorldImporters` database on the
     GO
     ```
 
-6. To run the script, select **Execute** from the SSMS toolbar.
-
-    ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
+6. Run the script.
