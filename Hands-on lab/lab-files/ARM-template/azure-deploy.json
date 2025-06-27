@@ -77,7 +77,7 @@
         "jbNetworkSecurityGroupName": "[concat(variables('jbVirtualMachineName'), '-nsg')]",
         "jbNetworkInterfaceName": "[concat(variables('jbVirtualMachineName'), '-nic')]",
         "jbPublicIpAddressName": "[concat(variables('jbVirtualMachineName'), '-ip')]",
-        "sqlVirtualMachineName": "SqlServer2008",
+        "sqlVirtualMachineName": "SqlServer2019",
         "sqlNetworkSecurityGroupName": "[concat(variables('sqlVirtualMachineName'), '-nsg')]",
         "sqlNetworkInterfaceName": "[concat(variables('sqlVirtualMachineName'), '-nic')]",
         "sqlPublicIpAddressName": "[concat(variables('sqlVirtualMachineName'), '-ip')]",
@@ -200,7 +200,7 @@
                     },
                     "imageReference": {
                         "publisher": "MicrosoftSQLServer",
-                        "offer": "SQL2008R2SP3-WS2008R2SP1",
+                        "offer": "SQL2019-WS2019",
                         "sku": "Standard",
                         "version": "latest"
                     },
