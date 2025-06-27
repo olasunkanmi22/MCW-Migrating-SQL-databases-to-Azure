@@ -313,8 +313,8 @@
                     "imageReference": {
                         "publisher": "microsoftvisualstudio",
                         "offer": "visualstudio2019latest",
-                        "sku": "vs-2019-comm-latest-ws2019",
-                        "version": "latest"
+                        "sku": "active-dummyplan-for-deprecation-requirement-vs19",
+                        "version": "2024.12.28"
                     }
                 },
                 "networkProfile": {
